@@ -1,6 +1,8 @@
 ## Examples
 Modules in this are small but useful and functional examples of how user-python-daemon can be used to improve desktop functionality. Please feel free to use these modules in a running user-python-daemon -- simply add the corresponding module name to your `user_python_daemon.conf`.
 
+For larger and more involved examples, see [mpris2controller](https://github.com/icasdri/mpris2controller) and [pybatterymonitor](https://github.com/icasdri/pybatterymonitor), which both can be run as part of user-python-daemon.
+
 ### GNOME KeePass Autolock
 
 	gnome_keepass_autolock.py
