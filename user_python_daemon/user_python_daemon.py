@@ -43,9 +43,7 @@ def _parse_args(options=None):
         log.info("Using config file {}".format(args.config_file))
         c_parser = configparser.ConfigParser()
         c_parser.read(args.config_file)
-        print(c_parser.sections())
         for name in c_parser.sections():
-            print(name)
             section = c_parser[name]
             if "path" in section:
                 module_paths.append(os.path.expanduser(section["path"]))
@@ -55,7 +53,6 @@ def _parse_args(options=None):
                 module = (name, NO_OPTIONS)
             modules.append(module)
 
-    print(modules, "\n", module_paths)
     return modules, module_paths
 
 def main(options=None):
