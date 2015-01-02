@@ -38,7 +38,7 @@ def _parse_args(options=None):
     module_paths = []
 
     if args.config_file is None:
-        args.config_file = os.path.expanduser("~") + "/.config/user_python_daemon.conf"
+        args.config_file = os.path.expanduser("~/.config/user_python_daemon.conf")
     if os.path.isfile(args.config_file):
         log.info("Using config file {}".format(args.config_file))
         c_parser = configparser.ConfigParser()
@@ -63,8 +63,8 @@ def main(options=None):
 
     DBusGMainLoop(set_as_default=True)
 
-    for path in module_paths:
-        log.info("Appending path {}".format(module_paths))
+    for path in set(module_paths):
+        log.info("Appending path {}".format(path))
         sys.path.append(path)
 
     for module_name, module_options in modules:
