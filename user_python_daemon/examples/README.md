@@ -17,7 +17,7 @@ To use this module add the following to your user-python-daemon configuration (l
 
 	thunderbird_notifications.py
 
-This module is meant to improve the notifications provided by the [Gnome Integration](https://addons.mozilla.org/en-US/thunderbird/addon/gnome-integration/) Plugin for [Thunderbird](https://www.mozilla.org/en-US/thunderbird/) by firing notifications with a consistent Bus Name. This allows for freedesktop notification-compliant desktops with "notification drawers" to properly display Thunderbird notifications.
+This module is meant to improve the notifications provided by the [Gnome Integration](https://addons.mozilla.org/en-US/thunderbird/addon/gnome-integration/) Plugin for [Thunderbird](https://www.mozilla.org/en-US/thunderbird/) by firing notifications with a consistent Bus Name. This allows for freedesktop notification-compliant desktops with "notification drawers" to properly display Thunderbird notifications as originating from a single application.
 
 To use this module add the following to your user-python-daemon configuration (located at `~/.config/user_python_daemon.conf` by default).
 

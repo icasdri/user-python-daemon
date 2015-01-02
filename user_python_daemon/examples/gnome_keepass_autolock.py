@@ -1,7 +1,7 @@
 # Copyright 2014 icasdri
 __author__ = 'icasdri'
 
-from dbus import SessionBus
+import dbus
 from subprocess import Popen
 from sys import argv
 
@@ -16,7 +16,4 @@ def entry_point(options=None):
     if len(options) == 2:
         global path_to_mono, path_to_keepass
         path_to_mono, path_to_keepass = options
-    SessionBus().add_signal_receiver(_handle_signal, "ActiveChanged", "org.gnome.ScreenSaver")
-
-def main(options=None):
-    entry_point(options)
+    dbus.SessionBus().add_signal_receiver(_handle_signal, "ActiveChanged", "org.gnome.ScreenSaver")

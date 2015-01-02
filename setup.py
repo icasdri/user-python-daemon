@@ -5,7 +5,7 @@ from user_python_daemon.user_python_daemon import VERSION, DESCRIPTION
 from distutils.core import setup
 
 setup(
-    name='pybatterymonitor',
+    name='user-python-daemon',
     version=str(VERSION),
     license='GPL3',
     author='icasdri',
