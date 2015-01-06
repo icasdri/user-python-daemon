@@ -71,8 +71,7 @@ def main(options=None):
         log.info("Invoking entry_point() on module {} with options {}".format(module_name, module_options))
         importlib.import_module(module_name).entry_point(module_options)
 
-    log.info("Removing unnecessary resources and entering MainLoop")
-    del modules, module_paths, module_name, module_options, path
+    log.info("Entering MainLoop")
 
     MainLoop().run()
 
