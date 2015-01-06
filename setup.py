@@ -16,10 +16,11 @@ setup(
         'Development Status :: 3 - Alpha',
         'Intended Audience :: End Users/Desktop',
         'Topic :: Utilities',
-        'License :: OSI Approved :: GPL License',
+        'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3'
     ],
     packages=['user_python_daemon'],
+	data_files=[('/etc/xdg/autostart',['distributing/user-python-daemon.desktop'])],
     scripts=['distributing/user-python-daemon']
 )
