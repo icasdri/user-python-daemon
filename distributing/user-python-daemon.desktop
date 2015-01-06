@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=user-python-daemon
+Comment=Start the User Python Daemon
+Exec=user-python-daemon
+Terminal=false
+Type=Application
