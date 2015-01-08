@@ -34,10 +34,11 @@ def entry_point(options=None):
 def main():
     import argparse
     a_parser = argparse.ArgumentParser("Thunderbird Notifications Proxy (part of user-python-daemon)",
-                                       "Use like notify-send.")
+                                       "Use like notify-send.", add_help=False)
     a_parser.add_argument("summary", type=str)
     a_parser.add_argument("body", type=str)
     a_parser.add_argument("-i", "--icon", type=str, default="mail-mark-unread")
+    a_parser.add_argument("--help", action="help", help="show this help message and exit")
     args, unknown = a_parser.parse_known_args()
     if MY_BUS_NAME in dbus.SessionBus().list_names():
         dbus.Interface(dbus.SessionBus().get_object(MY_BUS_NAME, MY_PATH), MY_INTERFACE)\
