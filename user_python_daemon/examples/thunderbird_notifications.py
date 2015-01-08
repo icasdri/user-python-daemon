@@ -16,7 +16,7 @@ class ThunderbirdNotifications(dbus.service.Object):
         bus_name = dbus.service.BusName(MY_BUS_NAME, bus=dbus.SessionBus())
         dbus.service.Object.__init__(self, bus_name, MY_PATH)
 
-        Notify.init("thunderbirdnotifications")
+        Notify.init("Thunderbird Notifications")
 
     @dbus.service.method(dbus_interface=MY_INTERFACE)
     def ProxyNotify(self, summary, body, icon="mail-mark-unread"):
@@ -37,8 +37,8 @@ def main():
                                        "Use like notify-send.")
     a_parser.add_argument("summary", type=str)
     a_parser.add_argument("body", type=str)
-    a_parser.add_argument("--icon", type=str, default="mail-mark-unread")
-    args = a_parser.parse_args()
+    a_parser.add_argument("-i", "--icon", type=str, default="mail-mark-unread")
+    args, unknown = a_parser.parse_known_args()
     if MY_BUS_NAME in dbus.SessionBus().list_names():
         dbus.Interface(dbus.SessionBus().get_object(MY_BUS_NAME, MY_PATH), MY_INTERFACE)\
             .ProxyNotify(args.summary, args.body, args.icon)
