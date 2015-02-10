@@ -4,11 +4,13 @@ __author__ = 'icasdri'
 
 import dbus
 import dbus.service
-from gi.repository import Notify
 
 MY_BUS_NAME = "org.icasdri.thunderbirdnotifications"
 MY_INTERFACE = MY_BUS_NAME
 MY_PATH = "/org/icasdri/thunderbirdnotifications"
+NOTIFY_NAME = "org.freedesktop.Notifications"
+NOTIFY_PATH = "/org/freedesktop/Notifications"
+NOTIFY_IFACE = NOTIFY_NAME
 
 
 class ThunderbirdNotifications(dbus.service.Object):
@@ -16,13 +18,17 @@ class ThunderbirdNotifications(dbus.service.Object):
         bus_name = dbus.service.BusName(MY_BUS_NAME, bus=dbus.SessionBus())
         dbus.service.Object.__init__(self, bus_name, MY_PATH)
 
-        Notify.init("Thunderbird Notifications")
+    def _notifyd(self):
+        return dbus.Interface(self._session_bus.get_object(NOTIFY_NAME, NOTIFY_PATH), NOTIFY_IFACE)
 
     @dbus.service.method(dbus_interface=MY_INTERFACE)
     def ProxyNotify(self, summary, body, icon="mail-mark-unread"):
-        notification = Notify.Notification.new(summary, body, icon)
-        notification.set_category("email.arrived")
-        notification.show()
+        self._notifyd().Notify("Thunderbird Notifications",  # Our app name
+                               icon, summary, body,
+                               [],  # We don't add any actions
+                               {"category": "email.arrived"},  # We use one hint
+                               -1)
+
 
 def entry_point(options=None):
     ThunderbirdNotifications()
