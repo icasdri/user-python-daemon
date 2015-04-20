@@ -21,6 +21,6 @@ setup(
         'Programming Language :: Python :: 3'
     ],
     packages=['user_python_daemon', 'user_python_daemon.examples'],
-	data_files=[('/etc/xdg/autostart',['distributing/user-python-daemon.desktop'])],
+    data_files=[('/etc/xdg/autostart', ['distributing/user-python-daemon.desktop'])],
     scripts=['distributing/user-python-daemon', 'distributing/thunderbird-notify-send']
 )
