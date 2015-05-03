@@ -19,7 +19,7 @@ class ThunderbirdNotifications(dbus.service.Object):
         dbus.service.Object.__init__(self, bus_name, MY_PATH)
 
     def _notifyd(self):
-        return dbus.Interface(self._session_bus.get_object(NOTIFY_NAME, NOTIFY_PATH), NOTIFY_IFACE)
+        return dbus.Interface(dbus.SessionBus().get_object(NOTIFY_NAME, NOTIFY_PATH), NOTIFY_IFACE)
 
     @dbus.service.method(dbus_interface=MY_INTERFACE)
     def ProxyNotify(self, summary, body, icon="mail-mark-unread"):
