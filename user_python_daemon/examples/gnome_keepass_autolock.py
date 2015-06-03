@@ -13,7 +13,7 @@ def _handle_signal(active):
         Popen([path_to_mono, path_to_keepass, "--lock-all"])
 
 def entry_point(options=None):
-    if len(options) == 2:
+    if options is not None and len(options) == 2:
         global path_to_mono, path_to_keepass
         path_to_mono, path_to_keepass = options
     dbus.SessionBus().add_signal_receiver(_handle_signal, "ActiveChanged", "org.gnome.ScreenSaver")
